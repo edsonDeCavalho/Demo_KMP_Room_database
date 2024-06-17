@@ -1,6 +1,5 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -39,16 +38,16 @@ kotlin {
     
     jvm("desktop")
     
-   // listOf(
-   //     iosX64(),
-   //     iosArm64(),
-   //     iosSimulatorArm64()
-   // ).forEach { iosTarget ->
-    //    iosTarget.binaries.framework {
-    //        baseName = "ComposeApp"
-    //        isStatic = true
-    //    }
-   // }
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+    baseName = "ComposeApp"
+            isStatic = true
+        }
+    }
     sourceSets.all {
         languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
     }
@@ -91,6 +90,8 @@ kotlin {
             implementation(libs.ktor.logging)
             implementation(libs.ktor.negotiation)
             implementation(libs.kotlinx.serialization.json)
+
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
