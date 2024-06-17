@@ -1,4 +1,4 @@
-# kmp_database 🗄📚 ROOM pour (IOS,Android,Deskshop) 
+# kmp_database 🗄📚 ROOM pour (Android,Deskshop) 
 
 kmp_database est un projet Kotlin Multiplatform conçu pour fonctionner de manière transparente sur les plateformes iOS, Bureau (Desktop), et Android. Ce projet de base utilise la bibliothèque Room pour une gestion efficace de la base de données et constitue un point de départ robuste pour les développeurs souhaitant implémenter des fonctionnalités de base de données multiplateformes.
 
@@ -7,7 +7,7 @@ kmp_database est un projet Kotlin Multiplatform conçu pour fonctionner de mani�
 
 * Fonctionnalités
 *  Prérequis
-*  Installation
+*  Installation`
 *  Utilisation
 *  Contribution
 *  Licence
