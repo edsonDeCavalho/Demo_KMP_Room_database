@@ -1,11 +1,5 @@
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -18,49 +12,32 @@ import androidx.room.RoomDatabase
 import core.db.data.Application
 import data.database.Kmp_database
 import kotlinx.coroutines.launch
+import navigation.NavController
+import navigation.PageInterface
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import ui.pages.HomePage
+import ui.pages.Page1
+import ui.pages.Page2
+
+
+
+enum class Kmp_database_scren() {
+    Home,
+    Page1,
+    Page2,
+}
 
 @Composable
 @Preview
 fun App(databaseBuilder: RoomDatabase.Builder<Kmp_database>) {
 
-    MaterialTheme {
+    Surface (modifier = Modifier.fillMaxSize()){
+        val navController = remember { NavController(PageInterface.HomePage) }
+        val curretPage by navController.currentPage.collectAsState()
 
-        val database = remember { databaseBuilder.build() }
-        val applicationDao = remember { database.applicationDao() }
-        val applications by applicationDao.getAllApplications().collectAsState(initial = emptyList())
-
-        val scope = rememberCoroutineScope()
-
-        LaunchedEffect(true) {
-            val applicationList = listOf(
-                Application(nom="NetPlus",description="HelloV1"),
-                Application(nom="NetPlus",description="HelloV1"),
-                Application(nom="NetPlus",description="HelloV1"),
-                Application(nom="NetPlus",description="HelloV1"),
-                Application(nom="NetPlus",description="HelloV1"),
-            )
-            applicationList.forEach {
-                applicationDao.insertApplication(it)
-            }
-        }
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize(),
-            contentPadding = PaddingValues(16.dp)
-        ) {
-            items(applications.size) { index ->
-                val application = applications[index]
-                Text("$application.nom",
-                modifier = Modifier
-                        .fillMaxWidth()
-                    .clickable {
-                        scope.launch {
-                            applicationDao.deleteApplication(applications[index])
-                        }
-                    }
-                    .padding(16.dp))
-            }
-        }
+        HomePage(visible = curretPage == PageInterface.HomePage, navController = navController)
+        Page1(databaseBuilder= databaseBuilder, visible = curretPage == PageInterface.Page1, navController = navController)
+        Page2(visible = curretPage == PageInterface.Page2, navController = navController)
     }
 }
+
