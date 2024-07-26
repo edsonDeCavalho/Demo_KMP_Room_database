@@ -1,43 +1,170 @@
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Surface
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.primarySurface
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
 import androidx.room.RoomDatabase
-import core.db.data.Application
 import data.database.Kmp_database
-import kotlinx.coroutines.launch
-import navigation.NavController
-import navigation.PageInterface
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import ui.pages.HomePage
-import ui.pages.Page1
-import ui.pages.Page2
-
-
-
-enum class Kmp_database_scren() {
-    Home,
-    Page1,
-    Page2,
-}
+import ui.data.BottomBarScreen
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import ui.pages.ApplicationList
 
 @Composable
 @Preview
 fun App(databaseBuilder: RoomDatabase.Builder<Kmp_database>) {
 
-    Surface (modifier = Modifier.fillMaxSize()){
-        val navController = remember { NavController(PageInterface.HomePage) }
-        val curretPage by navController.currentPage.collectAsState()
 
-        HomePage(visible = curretPage == PageInterface.HomePage, navController = navController)
-        Page1(databaseBuilder= databaseBuilder, visible = curretPage == PageInterface.Page1, navController = navController)
-        Page2(visible = curretPage == PageInterface.Page2, navController = navController)
+
+    MaterialTheme{
+        MainScreen(databaseBuilder)
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MainScreen(databaseBuilder : RoomDatabase.Builder<Kmp_database>) {
+    val navController = rememberNavController()
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Main Screen") },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = androidx.compose.material.MaterialTheme.colors.primarySurface, // Background color
+                    titleContentColor = Color.White // Title text color
+                ),
+            )
+        },
+        bottomBar = { AppBottomBar(navController = navController) },
+    ) //content:
+    {paddingValues->
+        BottomNavigationGraph(
+            navController = navController,
+            paddingModifier = Modifier.padding(paddingValues) ,
+            databaseBuilder = databaseBuilder
+        )
+    }
+}
+
+
+@Composable
+fun AppBottomBar(navController: NavHostController) {
+    val screens = listOf(
+        BottomBarScreen.Home,
+        BottomBarScreen.Tasks,
+        BottomBarScreen.Options
+    )
+    BottomNavigation() {
+        screens.forEach { screen ->
+            AddItem(
+                screen = screen,
+                navController = navController
+            )
+        }
+    }
+}
+
+@Composable
+fun RowScope.AddItem(
+    screen: BottomBarScreen,
+    navController: NavHostController
+) {
+    val backStackEntry = navController.currentBackStackEntryAsState()
+    BottomNavigationItem(
+        label = {
+            Text(text = screen.label, color = Color.White)
+        },
+        icon = {
+            Icon(
+                imageVector = screen.icon,
+                contentDescription = screen.route + "icon",
+                tint = Color.White
+            )
+        },
+        selected = screen.route == backStackEntry.value?.destination?.route,
+        onClick = {
+            navController.navigate(screen.route)
+        }
+    )
+}
+@Composable
+fun HomeScreen(paddingModifier: Modifier) {
+    Column(
+        modifier = paddingModifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "home", fontSize = 100.sp)
+        Spacer(modifier = Modifier.height(16.dp))
+        ElevatedButton(onClick = { }) {
+            Text("Room")
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        ElevatedButton(onClick = { }) {
+            Text("API")
+        }
+    }
+}
+@Composable
+fun Tasks(paddingModifier: Modifier) {
+    Box(
+        modifier = paddingModifier
+            .fillMaxSize(),
+        contentAlignment = Alignment.BottomCenter,
+    ) {
+        Text(text="Tasks", fontSize = 100.sp , modifier = Modifier.align(Alignment.Center))
+    }
+}
+@Composable
+fun Options(paddingModifier: Modifier) {
+    Box(
+        modifier = paddingModifier
+            .fillMaxSize(),
+        contentAlignment = Alignment.BottomCenter,
+    ) {
+        Text(text="Options", fontSize = 100.sp , modifier = Modifier.align(Alignment.Center))
+    }
+}
+
+@Composable
+fun BottomNavigationGraph(
+    navController: NavHostController,
+    paddingModifier: Modifier,
+    databaseBuilder : RoomDatabase.Builder<Kmp_database>
+) {
+    NavHost(navController = navController,
+        startDestination = BottomBarScreen.Home.route
+    ) {
+        composable(route= BottomBarScreen.Home.route) {
+            HomeScreen(paddingModifier)
+        }
+        composable(route= BottomBarScreen.Tasks.route) {
+            ApplicationList(
+                databaseBuilder = databaseBuilder,
+                paddingModifier = paddingModifier,
+                navController = navController)
+        }
+        composable(route= BottomBarScreen.Options.route) {
+            Options(paddingModifier)
+        }
+    }
+}
