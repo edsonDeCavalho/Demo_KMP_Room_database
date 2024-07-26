@@ -68,7 +68,9 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+
             implementation(compose.material3)
+            //implementation("androidx.compose.material3:material3-*:1.2.1")
             implementation(compose.materialIconsExtended)
 
             implementation(libs.androidx.room.runtime)
@@ -154,7 +156,9 @@ room {
 }
 
 dependencies {
-//    add("kspAndroid", libs.androidx.room.compiler)
+implementation(libs.androidx.games.activity)
+    implementation(libs.androidx.material3.android)
+    //    add("kspAndroid", libs.androidx.room.compiler)
 //    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
 //    add("kspIosX64", libs.androidx.room.compiler)
 //    add("kspIosArm64", libs.androidx.room.compiler)
