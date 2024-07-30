@@ -92,6 +92,9 @@ kotlin {
             implementation(libs.ktor.logging)
             implementation(libs.ktor.negotiation)
             implementation(libs.kotlinx.serialization.json)
+            implementation("media.kamel:kamel-image:0.9.0")
+           // implementation(libs.coil.compose.v240)
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -156,12 +159,13 @@ room {
 }
 
 dependencies {
-implementation(libs.androidx.games.activity)
+    implementation(libs.androidx.games.activity)
     implementation(libs.androidx.material3.android)
+    implementation(libs.material)
     //    add("kspAndroid", libs.androidx.room.compiler)
-//    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
-//    add("kspIosX64", libs.androidx.room.compiler)
-//    add("kspIosArm64", libs.androidx.room.compiler)
+    //    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
+    //    add("kspIosX64", libs.androidx.room.compiler)
+    //    add("kspIosArm64", libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)
 }
 

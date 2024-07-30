@@ -1,16 +1,18 @@
-package ui.pages
-
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -19,92 +21,92 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.room.RoomDatabase
+import androidx.navigation.NavController
 import core.db.data.Application
+import data.Note
 import data.database.Kmp_database
 import kotlinx.coroutines.launch
-import navigation.PageInterface
+import ui.components.items.NoteItem
 
 @Composable
 fun ApplicationList(
-    databaseBuilder: RoomDatabase.Builder<Kmp_database>,
+    database: Kmp_database,
     paddingModifier: Modifier = Modifier.fillMaxSize(),
-    navController: NavHostController,
+    navController: NavController,
 ) {
+    Box(modifier = paddingModifier) {
         Column(
-            modifier = paddingModifier,
+            modifier = Modifier.fillMaxSize().background(Color.Gray),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            MaterialTheme{
+            MaterialTheme {
                 Text(text = "Page room : Database")
 
-                val database = remember { databaseBuilder.build() }
-                val applicationDao = remember { database.applicationDao() }
-                val applications by applicationDao.getAllApplications().collectAsState(initial = emptyList())
+                val noteDao = remember { database.noteDao() }
+                val notesList by noteDao.getAllNotes().collectAsState(initial = emptyList())
 
                 val scope = rememberCoroutineScope()
 
                 LaunchedEffect(true) {
-                    val applicationList = listOf(
-                        Application(nom="NetPlus", description="HelloV1"),
-                        Application(nom="WeatherPro", description="ForecastV1"),
-                        Application(nom="MusicStream", description="TuneIn"),
-                        Application(nom="PhotoEdit", description="SnapFix"),
-                        Application(nom="VideoPlay", description="StreamV2"),
-                        Application(nom="ChatNow", description="InstantMsg"),
-                        Application(nom="GameZone", description="PlayNow"),
-                        Application(nom="FinanceMgr", description="BudgetV2"),
-                        Application(nom="HealthTrack", description="Wellness"),
-                        Application(nom="FitApp", description="WorkoutV1"),
-                        Application(nom="CookBook", description="RecipeV1"),
-                        Application(nom="ReadIt", description="BookWorm"),
-                        Application(nom="ShopEasy", description="DealsV2"),
-                        Application(nom="TravelBuddy", description="TripGuide"),
-                        Application(nom="StudyMate", description="LearnV1"),
-                        Application(nom="NoteTaker", description="MemoV2"),
-                        Application(nom="NewsNow", description="Headlines"),
-                        Application(nom="TaskMaster", description="ToDoV1"),
-                        Application(nom="MindRelax", description="CalmV1"),
-                        Application(nom="SportWatch", description="ScoresV2"),
-                        Application(nom="LangLearn", description="SpeakV1"),
-                        Application(nom="PetCare", description="FurryV1"),
-                        Application(nom="FoodOrder", description="EatsV1"),
-                        Application(nom="CarAssist", description="DriveV2"),
-                        Application(nom="GardenPlan", description="GrowIt"),
-                        Application(nom="FashionFit", description="StyleV1"),
-                        Application(nom="EventCheck", description="AttendV1"),
-                        Application(nom="HouseKeep", description="CleanV2"),
-                        Application(nom="BudgetBuddy", description="SaveV1"),
-                        Application(nom="SocialBuzz", description="ConnectV1"),
+                    val notestToInsert = listOf(
+                        Note(title="NetPlus", text="HelloV1",image =""),
+                        Note(title="WeatherPro", text="ForecastV1",image =""),
+                        Note(title="MusicStream", text="TuneIn",image =""),
+                        Note(title="PhotoEdit", text="SnapFix",image =""),
+                        Note(title="VideoPlay", text="StreamV2",image =""),
+                        Note(title="ChatNow", text="InstantMsg",image =""),
+                        Note(title="GameZone", text="PlayNow",image =""),
+                        Note(title="FinanceMgr", text="BudgetV2",image =""),
+                        Note(title="HealthTrack", text="Wellness",image =""),
+                        Note(title="FitApp", text="WorkoutV1",image =""),
+                        Note(title="CookBook", text="RecipeV1",image =""),
+                        Note(title="ReadIt", text="BookWorm",image =""),
+                        Note(title="ShopEasy", text="DealsV2",image =""),
+                        Note(title="TravelBuddy", text="TripGuide",image =""),
+                        Note(title="StudyMate", text="LearnV1",image =""),
+                        Note(title="NoteTaker", text="MemoV2",image =""),
+                        Note(title="NewsNow", text="Headlines",image =""),
+                        Note(title="TaskMaster", text="ToDoV1",image =""),
+                        Note(title="MindRelax", text="CalmV1",image =""),
                     )
-                    applicationList.forEach {
-                        applicationDao.insertApplication(it)
+                    notestToInsert.forEach {
+                        noteDao.insertNote(it)
                     }
                 }
                 LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .weight(1f),
+                    modifier = Modifier.fillMaxSize(),
                     contentPadding = PaddingValues(16.dp)
                 ) {
-                    items(applications.size) { index ->
-                        val application = applications[index]
-                        Text(
-                            text = " \uD83D\uDC7E id : "+application.id+" Nom : "+application.nom+" Description "+application.description,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable {
-                                    scope.launch {
-                                        applicationDao.deleteApplication(applications[index])
-                                    }
-                                }
-                                .padding(16.dp)
-                        )
+                    items(notesList.size) { index ->
+                        val note = notesList[index]
+                        NoteItem(note.title,onDeleteClick = {
+                            scope.launch {
+                                noteDao.deleteNote(note)
+                            }
+                        })
                     }
                 }
             }
         }
+        FloatingActionButton(
+            onClick = { println("Add data") },
+            containerColor = Color.Blue,
+            contentColor = Color.White,
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(24.dp) // Adjust the padding as needed
+        ) {
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = "Ajouter une note", // Corrected from 'contenttext' to 'contentDescription'
+                modifier = Modifier.size(24.dp), // Adjust the size as needed
+                tint = Color.White // Adjust the color as needed
+            )
+        }
+    }
 }
+
+
