@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import data.Note
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 
@@ -27,17 +28,20 @@ import io.kamel.image.asyncPainterResource
  */
 @Composable
 fun NoteItem(
-    title: String,
-    onDeleteClick: () -> Unit
+    note: Note,
+    onDeleteClick: () -> Unit,
+    onclickToDetails: () -> Unit,
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
             .background(color = Color.White, shape = RoundedCornerShape(8.dp))
-            .padding(8.dp),
+            .padding(8.dp)
+            .clickable { onclickToDetails() },
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.SpaceBetween,
+
     ) {
         // Image on the left
         KamelImage(
@@ -51,7 +55,7 @@ fun NoteItem(
 
         )
         Text(
-            text = title,
+            text = note.title,
             modifier = Modifier
                 .weight(1f)
                 .padding(start = 16.dp),
