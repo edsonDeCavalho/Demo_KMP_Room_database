@@ -35,7 +35,12 @@ fun ApplicationList(
     database: Kmp_database,
     paddingModifier: Modifier = Modifier.fillMaxSize(),
     navController: NavController,
+    mainViewModel : MainViewModel
 ) {
+    LaunchedEffect(Unit) {
+        mainViewModel.updateTitle("Demo Room")
+    }
+
     Box(modifier = paddingModifier) {
         Column(
             modifier = Modifier.fillMaxSize().background(Color.Gray),
@@ -82,11 +87,12 @@ fun ApplicationList(
                 ) {
                     items(notesList.size) { index ->
                         val note = notesList[index]
-                        NoteItem(note.title,onDeleteClick = {
+                        NoteItem(note,
+                            onDeleteClick = {
                             scope.launch {
                                 noteDao.deleteNote(note)
                             }
-                        })
+                        }, onclickToDetails = { navController.navigate("notedetails/${note.id}") })
                     }
                 }
             }

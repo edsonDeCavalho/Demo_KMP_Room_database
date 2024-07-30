@@ -31,6 +31,11 @@ sealed class BottomBarScreen(
         label="Options",
         icon= Icons.Rounded.Settings
     )
+    object NoteDetails: BottomBarScreen(
+        route="notedetails",
+        label="Note details",
+        icon= Icons.Rounded.Settings
+    )
 }
 
 /**
