@@ -52,40 +52,10 @@ fun NotesListePage(
         ) {
             MaterialTheme {
                 Text(text = "Page room : Database")
-
-
                 val database_test = LocalDatabase.current
                 val noteDao = database_test.noteDao()
                 val notesList by noteDao.getAllNotes().collectAsState(initial = emptyList())
                 val scope = rememberCoroutineScope()
-
-
-                LaunchedEffect(true) {
-                    val notestToInsert = listOf(
-                        Note(title="NetPlus", text="HelloV1",image =""),
-                        Note(title="WeatherPro", text="ForecastV1",image =""),
-                        Note(title="MusicStream", text="TuneIn",image =""),
-                 /*     Note(title="PhotoEdit", text="SnapFix",image =""),
-                        Note(title="VideoPlay", text="StreamV2",image =""),
-                        Note(title="ChatNow", text="InstantMsg",image =""),
-                        Note(title="GameZone", text="PlayNow",image =""),
-                        Note(title="FinanceMgr", text="BudgetV2",image =""),
-                        Note(title="HealthTrack", text="Wellness",image =""),
-                        Note(title="FitApp", text="WorkoutV1",image =""),
-                        Note(title="CookBook", text="RecipeV1",image =""),
-                        Note(title="ReadIt", text="BookWorm",image =""),
-                        Note(title="ShopEasy", text="DealsV2",image =""),
-                        Note(title="TravelBuddy", text="TripGuide",image =""),
-                        Note(title="StudyMate", text="LearnV1",image =""),
-                        Note(title="NoteTaker", text="MemoV2",image =""),
-                        Note(title="NewsNow", text="Headlines",image =""),
-                        Note(title="TaskMaster", text="ToDoV1",image =""),
-                        Note(title="MindRelax", text="CalmV1",image =""),*/
-                    )
-                    notestToInsert.forEach {
-                        noteDao.insertNote(it)
-                    }
-                }
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = PaddingValues(16.dp)
@@ -103,7 +73,7 @@ fun NotesListePage(
             }
         }
         FloatingActionButton(
-            onClick = { println("Add data") },
+            onClick = { navController.navigate("createnote") },
             containerColor = Color.Blue,
             contentColor = Color.White,
             modifier = Modifier

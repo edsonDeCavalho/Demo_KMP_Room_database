@@ -13,6 +13,7 @@ import data.database.Kmp_database
 import ui.dataUi.BottomBarScreen
 import ui.dataUi.TopBarScreen
 import ui.pages.cali.InfoPage
+import ui.pages.createNote.CreateNotePage
 import ui.pages.home.HomeScreen
 import ui.pages.notedetails.NoteDetails
 import ui.pages.options.Options
@@ -36,9 +37,11 @@ fun BottomNavigationGraph(
         /**
          * Bottom Bar routes
          */
+        //Page Home
         composable(route= BottomBarScreen.Home.route) {
             HomeScreen(paddingModifier,mainViewModel=mainViewModel)
         }
+        //Page liste de Notes
         composable(route= BottomBarScreen.Tasks.route) {
             NotesListePage(
                 database = database,
@@ -46,9 +49,15 @@ fun BottomNavigationGraph(
                 navController = navController,
                 mainViewModel=mainViewModel)
         }
+        //Page Options
         composable(route= BottomBarScreen.Options.route) {
             Options(paddingModifier,mainViewModel)
         }
+        //Page create Note
+        composable(route= BottomBarScreen.CreateNote.route) {
+            CreateNotePage(paddingModifier,mainViewModel)
+        }
+        //PaGE détails note
         composable(
             route = "${BottomBarScreen.NoteDetails.route}/{noteId}",
             arguments = listOf(
@@ -66,6 +75,7 @@ fun BottomNavigationGraph(
         /**
          * Top bar
          */
+        //Page Infos
         composable(route= TopBarScreen.InfoPage.route) {
             InfoPage(paddingModifier,mainViewModel)
         }
