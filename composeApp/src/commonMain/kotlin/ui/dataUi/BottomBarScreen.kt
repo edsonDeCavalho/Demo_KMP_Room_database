@@ -1,8 +1,7 @@
-package ui.data
+package ui.dataUi
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Android
-import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Settings

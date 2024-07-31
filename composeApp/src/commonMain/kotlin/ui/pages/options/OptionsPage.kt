@@ -1,4 +1,4 @@
-package ui.pages.cali
+package ui.pages.options
 
 import MainViewModel
 import androidx.compose.foundation.layout.Box
@@ -10,16 +10,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 
+/**
+ * Page Options
+ */
 @Composable
-fun InfoPage(paddingModifier: Modifier,mainViewModel : MainViewModel) {
+fun Options(paddingModifier: Modifier, mainViewModel : MainViewModel) {
     LaunchedEffect(Unit) {
-        mainViewModel.updateTitle("Informations")
+        mainViewModel.updateTitle("Options")
     }
-   // mainViewModel.updateTitle("Home")
     Box(
-        modifier = paddingModifier.fillMaxSize(),
+        modifier = paddingModifier
+            .fillMaxSize(),
         contentAlignment = Alignment.BottomCenter,
     ) {
-        Text(text="InfoPage", fontSize = 70.sp , modifier = Modifier.align(Alignment.Center))
+        Text(text="Options", fontSize = 100.sp , modifier = Modifier.align(Alignment.Center))
     }
 }

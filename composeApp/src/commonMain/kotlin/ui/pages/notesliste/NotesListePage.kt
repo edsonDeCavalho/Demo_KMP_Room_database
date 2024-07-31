@@ -24,14 +24,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import core.db.data.Application
 import data.Note
 import data.database.Kmp_database
 import kotlinx.coroutines.launch
 import ui.components.items.NoteItem
 
+/**
+ * Page list de notes
+ */
 @Composable
-fun ApplicationList(
+fun NotesListePage(
     database: Kmp_database,
     paddingModifier: Modifier = Modifier.fillMaxSize(),
     navController: NavController,

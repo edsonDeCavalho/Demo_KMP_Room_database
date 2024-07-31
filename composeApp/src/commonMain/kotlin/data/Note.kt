@@ -4,6 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * Classe representant une note
+ */
 @Entity(tableName = "notes")
 data class Note(
     @PrimaryKey(autoGenerate = true)
