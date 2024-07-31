@@ -93,9 +93,6 @@ kotlin {
             implementation(libs.ktor.negotiation)
             implementation(libs.kotlinx.serialization.json)
             implementation("media.kamel:kamel-image:0.9.0")
-
-           // implementation(libs.coil.compose.v240)
-
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

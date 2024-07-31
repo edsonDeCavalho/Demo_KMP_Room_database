@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import core.LocalDatabase
 import data.Note
 import data.database.Kmp_database
 import kotlinx.coroutines.launch
@@ -52,17 +53,19 @@ fun NotesListePage(
             MaterialTheme {
                 Text(text = "Page room : Database")
 
-                val noteDao = remember { database.noteDao() }
-                val notesList by noteDao.getAllNotes().collectAsState(initial = emptyList())
 
+                val database_test = LocalDatabase.current
+                val noteDao = database_test.noteDao()
+                val notesList by noteDao.getAllNotes().collectAsState(initial = emptyList())
                 val scope = rememberCoroutineScope()
+
 
                 LaunchedEffect(true) {
                     val notestToInsert = listOf(
                         Note(title="NetPlus", text="HelloV1",image =""),
                         Note(title="WeatherPro", text="ForecastV1",image =""),
                         Note(title="MusicStream", text="TuneIn",image =""),
-                        Note(title="PhotoEdit", text="SnapFix",image =""),
+                 /*     Note(title="PhotoEdit", text="SnapFix",image =""),
                         Note(title="VideoPlay", text="StreamV2",image =""),
                         Note(title="ChatNow", text="InstantMsg",image =""),
                         Note(title="GameZone", text="PlayNow",image =""),
@@ -77,7 +80,7 @@ fun NotesListePage(
                         Note(title="NoteTaker", text="MemoV2",image =""),
                         Note(title="NewsNow", text="Headlines",image =""),
                         Note(title="TaskMaster", text="ToDoV1",image =""),
-                        Note(title="MindRelax", text="CalmV1",image =""),
+                        Note(title="MindRelax", text="CalmV1",image =""),*/
                     )
                     notestToInsert.forEach {
                         noteDao.insertNote(it)
