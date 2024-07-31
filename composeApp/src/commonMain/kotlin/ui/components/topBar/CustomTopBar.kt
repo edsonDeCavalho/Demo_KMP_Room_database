@@ -18,10 +18,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 
+/**
+ * Custom bar TopAppBar. Aide preincipalmment a changer le titre et les actions
+ * presentes sur la bare de navigation en cours de execution
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomTopBar(mainViewModel: MainViewModel,navController: NavHostController) {
+    //Recuperation du titre a afficher
     val title by mainViewModel.appBarTitle.collectAsState()
+
     TopAppBar(
         title = { Text(title) } ,
         actions = {

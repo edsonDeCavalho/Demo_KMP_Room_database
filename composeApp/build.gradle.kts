@@ -93,6 +93,7 @@ kotlin {
             implementation(libs.ktor.negotiation)
             implementation(libs.kotlinx.serialization.json)
             implementation("media.kamel:kamel-image:0.9.0")
+
            // implementation(libs.coil.compose.v240)
 
         }
@@ -162,6 +163,7 @@ dependencies {
     implementation(libs.androidx.games.activity)
     implementation(libs.androidx.material3.android)
     implementation(libs.material)
+    implementation(libs.androidx.runtime.android)
     //    add("kspAndroid", libs.androidx.room.compiler)
     //    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
     //    add("kspIosX64", libs.androidx.room.compiler)

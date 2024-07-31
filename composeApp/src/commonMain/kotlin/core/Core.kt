@@ -1,13 +1,18 @@
 package core
 
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.room.RoomDatabase
-import core.repository.ApplicationsRepository
 import data.database.Kmp_database
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
-class Core (databaseBuilder: RoomDatabase.Builder<Kmp_database>){
-
+class Core (){
     companion object{
-           // val applicationsRepository = ApplicationsRepository(database = )
+        val LocalDatabase = staticCompositionLocalOf<Kmp_database> {
+            error("Database not provided")
+        }
     }
+}
+val LocalDatabase = staticCompositionLocalOf<Kmp_database> {
+    error("Database not provided")
 }
