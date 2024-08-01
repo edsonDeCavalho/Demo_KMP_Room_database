@@ -2,7 +2,6 @@ package ui.pages.notedetails
 
 import MainViewModel
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -35,7 +34,6 @@ import data.Note
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /**
  * Page NoteDetails
@@ -85,13 +83,12 @@ fun NoteDetails(noteId: Long, paddingModifier: Modifier, mainViewModel: MainView
                 modifier = paddingModifier
                     .fillMaxSize()
                     .padding(innerPadding)
-                    .padding(16.dp),
+                    .padding(5.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 item{Spacer(modifier = Modifier.height(8.dp))
-
                 KamelImage(
-                    resource = asyncPainterResource("https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"),
+                    resource = asyncPainterResource("https://store-images.s-microsoft.com/image/apps.14650.14523499105264405.5af49363-c5aa-48f7-8247-82e253ce4b89.b2a77e40-3316-4086-b910-74eb3db04a4a"),
                     contentDescription = "Image note",
                     modifier = Modifier
                         .size(150.dp)

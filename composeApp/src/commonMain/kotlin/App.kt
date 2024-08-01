@@ -20,16 +20,6 @@ fun App(databaseBuilder: RoomDatabase.Builder<Kmp_database>) {
     val database = remember { databaseBuilder.build() }
     val noteDao = database.noteDao()
     val scope = rememberCoroutineScope()
-    val notestToInsert = listOf(
-        Note(title="NetPlus", text="HelloV1",image =""),
-        Note(title="WeatherPro", text="ForecastV1",image =""),
-        Note(title="MusicStream", text="TuneIn",image =""),
-    )
-    notestToInsert.forEach {
-        scope.launch {
-            noteDao.insertNote(it)
-        }
-    }
     MaterialTheme{
         /**
          * Main page
