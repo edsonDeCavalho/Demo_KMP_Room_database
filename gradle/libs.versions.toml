@@ -45,6 +45,7 @@ gamesActivity = "3.0.4"
 material3Android = "1.2.1"
 material = "1.12.0"
 runtimeAndroid = "1.6.8"
+foundationLayoutAndroid = "1.6.8"
 
 
 [libraries]
@@ -96,6 +97,7 @@ androidx-games-activity = { group = "androidx.games", name = "games-activity", v
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-runtime-android = { group = "androidx.compose.runtime", name = "runtime-android", version.ref = "runtimeAndroid" }
+androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version.ref = "foundationLayoutAndroid" }
 
 
 [plugins]

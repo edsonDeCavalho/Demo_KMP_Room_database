@@ -34,7 +34,7 @@ fun NoteItem(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .background(color = Color.White, shape = RoundedCornerShape(8.dp))
+            .background(color = Color.LightGray, shape = RoundedCornerShape(8.dp))
             .padding(8.dp)
             .clickable { onclickToDetails() },
         verticalAlignment = Alignment.CenterVertically,
@@ -43,12 +43,12 @@ fun NoteItem(
     ) {
         // Image on the left
         KamelImage(
-            resource = asyncPainterResource("https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"),
+            resource = asyncPainterResource("https://store-images.s-microsoft.com/image/apps.14650.14523499105264405.5af49363-c5aa-48f7-8247-82e253ce4b89.b2a77e40-3316-4086-b910-74eb3db04a4a"),
             contentDescription = "Note Image",
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .size(50.dp)
-                .background(Color.Gray, shape = RoundedCornerShape(8.dp))
+                .background(Color.LightGray, shape = RoundedCornerShape(18.dp))
                 .clip(RoundedCornerShape(topEnd = 18.dp , topStart = 18.dp, bottomEnd = 18.dp, bottomStart = 18.dp))
 
         )
@@ -58,7 +58,7 @@ fun NoteItem(
                 .weight(1f)
                 .padding(start = 16.dp),
             fontSize = 16.sp,
-            color = Color.Black
+                color = Color.Black
         )
 
         // Delete button on the right

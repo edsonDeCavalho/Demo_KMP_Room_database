@@ -46,7 +46,7 @@ fun NotesListePage(
 
     Box(modifier = paddingModifier) {
         Column(
-            modifier = Modifier.fillMaxSize().background(Color.Gray),
+            modifier = Modifier.fillMaxSize().background(Color.White),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

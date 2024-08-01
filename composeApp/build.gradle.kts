@@ -161,6 +161,7 @@ dependencies {
     implementation(libs.androidx.material3.android)
     implementation(libs.material)
     implementation(libs.androidx.runtime.android)
+    implementation(libs.androidx.foundation.layout.android)
     //    add("kspAndroid", libs.androidx.room.compiler)
     //    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
     //    add("kspIosX64", libs.androidx.room.compiler)

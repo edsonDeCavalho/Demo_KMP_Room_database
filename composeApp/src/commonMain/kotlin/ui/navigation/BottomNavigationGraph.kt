@@ -39,7 +39,7 @@ fun BottomNavigationGraph(
          */
         //Page Home
         composable(route= BottomBarScreen.Home.route) {
-            HomeScreen(paddingModifier,mainViewModel=mainViewModel)
+            HomeScreen(paddingModifier,navController = navController,mainViewModel=mainViewModel)
         }
         //Page liste de Notes
         composable(route= BottomBarScreen.Tasks.route) {
