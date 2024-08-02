@@ -41,13 +41,13 @@ fun CustomTopBar(mainViewModel: MainViewModel,navController: NavHostController) 
                 )
             }
             IconButton(onClick = { navController.navigate("info") }) {
-            Icon(
-                imageVector = Icons.Filled.Settings,
-                contentDescription = "More Icon",
-                tint = Color.White, // Set the icon color
-                modifier = Modifier.size(34.dp) // Set the icon size
-            )
-        }
+                Icon(
+                    imageVector = Icons.Filled.Settings,
+                    contentDescription = "Paramétres",
+                    tint = Color.White, // Set the icon color
+                    modifier = Modifier.size(34.dp) // Set the icon size
+                )
+            }
         },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = Color.Blue,

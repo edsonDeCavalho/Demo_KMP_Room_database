@@ -19,7 +19,8 @@ fun AppBottomBar(navController: NavHostController) {
     val screens = listOf(
         BottomBarScreen.Home,
         BottomBarScreen.Tasks,
-        BottomBarScreen.Options
+        BottomBarScreen.Options,
+        BottomBarScreen.ApiDemo
     )
     BottomNavigation(backgroundColor= Color.Blue) {
         screens.forEach { screen ->

@@ -38,16 +38,16 @@ kotlin {
     
     jvm("desktop")
     
-  //  listOf(
-  //      iosX64(),
-  //      iosArm64(),
-  //      iosSimulatorArm64()
-  //  ).forEach { iosTarget ->
-  //      iosTarget.binaries.framework {
-  //  baseName = "ComposeApp"
-  //          isStatic = true
-  //      }
-  //  }
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+    baseName = "ComposeApp"
+            isStatic = true
+        }
+    }
     sourceSets.all {
         languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
     }
@@ -84,7 +84,6 @@ kotlin {
             implementation(libs.kermit)
 
             implementation(libs.koin.core)
-            implementation(libs.koin.core)
             implementation(libs.koin.compose)
 
             implementation(libs.ktor.core)
@@ -98,9 +97,9 @@ kotlin {
             implementation(compose.desktop.currentOs)
             implementation(libs.ktor.client.okhttp)
         }
-        //iosMain.dependencies {
-          //  implementation(libs.ktor.client.darwin)
-        //}
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
+        }
     }
     task("testClasses")
 }

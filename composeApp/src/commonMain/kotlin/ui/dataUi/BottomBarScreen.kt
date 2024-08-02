@@ -2,6 +2,7 @@ package ui.dataUi
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Android
+import androidx.compose.material.icons.rounded.Api
 import androidx.compose.material.icons.rounded.EditNote
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Info
@@ -40,6 +41,11 @@ sealed class BottomBarScreen(
         route="createnote",
         label="Create note",
         icon= Icons.Rounded.EditNote
+    )
+    object ApiDemo: BottomBarScreen(
+        route="api",
+        label="Api Demo",
+        icon= Icons.Rounded.Api
     )
 }
 

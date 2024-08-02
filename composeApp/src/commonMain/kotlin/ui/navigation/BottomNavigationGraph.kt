@@ -12,6 +12,7 @@ import androidx.navigation.navArgument
 import data.database.Kmp_database
 import ui.dataUi.BottomBarScreen
 import ui.dataUi.TopBarScreen
+import ui.pages.apidemo.ApiDemoPage
 import ui.pages.cali.InfoPage
 import ui.pages.createNote.CreateNotePage
 import ui.pages.home.HomeScreen
@@ -31,9 +32,6 @@ fun BottomNavigationGraph(
         startDestination = BottomBarScreen.Home.route
     ) {
         /// paddingModifier.background(Color.Cyan)
-        /**
-         * Bottom Bar routes
-         */
         /**
          * Bottom Bar routes
          */
@@ -69,9 +67,10 @@ fun BottomNavigationGraph(
                 NoteDetails(noteId,paddingModifier,mainViewModel)
             }
         }
-        /**
-         * Top bar
-         */
+        //Page demo api
+        composable(route= BottomBarScreen.ApiDemo.route) {
+            ApiDemoPage(paddingModifier,navController,mainViewModel)
+        }
         /**
          * Top bar
          */

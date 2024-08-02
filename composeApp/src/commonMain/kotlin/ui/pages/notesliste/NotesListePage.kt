@@ -3,7 +3,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -68,6 +70,7 @@ fun NotesListePage(
                                 noteDao.deleteNote(note)
                             }
                         }, onclickToDetails = { navController.navigate("notedetails/${note.id}") })
+                        Spacer(modifier = Modifier.height(10.dp))
                     }
                 }
             }
@@ -78,13 +81,13 @@ fun NotesListePage(
             contentColor = Color.White,
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(24.dp) // Adjust the padding as needed
+                .padding(24.dp)
         ) {
             Icon(
                 imageVector = Icons.Default.Add,
-                contentDescription = "Ajouter une note", // Corrected from 'contenttext' to 'contentDescription'
-                modifier = Modifier.size(24.dp), // Adjust the size as needed
-                tint = Color.White // Adjust the color as needed
+                contentDescription = "Ajouter une note",
+                modifier = Modifier.size(24.dp),
+                tint = Color.White
             )
         }
     }

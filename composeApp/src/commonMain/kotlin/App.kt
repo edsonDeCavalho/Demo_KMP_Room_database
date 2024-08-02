@@ -5,9 +5,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.room.RoomDatabase
 import core.LocalDatabase
-import data.Note
 import data.database.Kmp_database
-import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import ui.pages.mainScreen.MainScreen
 
