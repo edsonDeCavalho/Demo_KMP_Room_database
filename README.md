@@ -1,33 +1,33 @@
-# kmp_database 🗄📚(IOS,Android,Deskshop) 
+# kmp_database 🗄📚 ROOM pour (Android,Deskshop) 
 
-kmp_database is a Kotlin Multiplatform project designed to work seamlessly on iOS, Desktop, and Android platforms. This base project utilizes the Room library for efficient database management and offers a robust starting point for developers looking to implement cross-platform database functionalities.
+kmp_database est un projet Kotlin Multiplatform conçu pour fonctionner de manière transparente sur les plateformes iOS, Bureau (Desktop), et Android. Ce projet de base utilise la bibliothèque Room pour une gestion efficace de la base de données et constitue un point de départ robuste pour les développeurs souhaitant implémenter des fonctionnalités de base de données multiplateformes.
 
 
 ## Table of Contents
 
-* Features
-* Prerequisites
-* Installation
-* Usage
-* Contributing
-* License
+* Fonctionnalités
+*  Prérequis
+*  Installation`
+*  Utilisation
+*  Contribution
+*  Licence
 
 ## Features
 
-* Cross-Platform: Works on iOS, Desktop, and Android platforms.
-* Room Implementation: Uses Room for database management, providing an easy-to-use, abstracted database layer.
-* Kotlin Multiplatform: Written in Kotlin for shared codebase across different platforms.
+* Multiplateforme : Fonctionne sur les plateformes iOS, Bureau (Desktop), et Android.
+* Implémentation de Room : Utilise Room pour la gestion de la base de données, offrant une couche de base de données abstraite et facile à utiliser.
+* Kotlin Multiplatform : Écrit en Kotlin pour une base de code partagée entre différentes plateformes.
 
 ## Prerequisites
 
-* Kotlin 1.5.30 or later
-* Android Studio Arctic Fox 2020.3.1 or later
-* Xcode 12.5 or later (for iOS development)
-* Gradle 7.0 or later
+* Kotlin 1.5.30 ou version ultérieure
+* Android Studio Arctic Fox 2020.3.1 ou version ultérieure
+* Xcode 12.5 ou version ultérieure (pour le développement iOS)
+* Gradle 7.0 ou version ultérieure
 
 ## Installation
 
-### Clone the repository:
+### Cloner le dépôt :
 
 ```bash
 
@@ -37,29 +37,23 @@ git clone https://github.com/edsonDeCavalho/Demo_KMP_Room_database.git
 cd kmp_database
 ```
 
-Open the project in Android Studio:
+Ouvrir le projet dans Android Studio :
 
-1. Choose "Open an existing Android Studio project" and select the cloned repository folder.
-Sync the project with Gradle files:
+1. Choisissez "Ouvrir un projet Android Studio existant" et sélectionnez le dossier du dépôt cloné.
 
-2. Click on "File" > "Sync Project with Gradle Files".
-Build the project:
+2. Synchroniser le projet avec les fichiers Gradle :
 
-3. Select "Build" > "Make Project" from the menu or use the shortcut Ctrl+F9.
-
-## Usage
+## Utilisation
 
 ### Android
 
-#### 1.Add Room dependencies in your build.gradle file:
-gradle
+#### 1.Ajouter les dépendances Room dans votre fichier build.gradle :
 
-Copier le code
-
+```gradle
 implementation "androidx.room:room-runtime:2.3.0"
 kapt "androidx.room:room-compiler:2.3.0"
-
-#### 2.Define your data entities and DAO:
+```
+#### 2.Définir vos entités de données et DAO :
 
 ```kotlin
 @Entity(tableName = "example_table")
@@ -80,7 +74,7 @@ fun getAll(): List<ExampleEntity>
 }
 ```
 
-Create your Room database:
+Créer votre base de données Room :
 ```Kotlin
 
 @Database(entities = [ExampleEntity::class], version = 1)
@@ -94,17 +88,18 @@ val db = Room.databaseBuilder(
 ).build()
 
 ```
-## Contributing
+## Contribution
 
-We welcome contributions to this project. Please follow these steps to contribute:
-Fork the repository.
+Nous accueillons les contributions à ce projet. Veuillez suivre ces étapes pour contribuer :
+1. Forker le dépôt.
+2. Créer une nouvelle branche (git checkout -b fonction/votre-nom-de-fonctionnalité).
+3. Commiter vos changements (git commit -m 'Ajouter une fonctionnalité').
+4. Pousser la branche (git push origin fonction/votre-nom-de-fonctionnalité).
+5. Ouvrir une pull request.
 
-1. Create a new branch (git checkout -b feature/your-feature-name).
-2. Commit your changes (git commit -m 'Add some feature').
-3. Push to the branch (git push origin feature/your-feature-name).
-4. Open a pull request.
+## Licence
 
-## License
+Ce projet est sous licence MIT - voir le fichier LICENSE pour plus de détails.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+
 
