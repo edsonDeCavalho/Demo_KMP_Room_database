@@ -82,7 +82,7 @@ fun CreateNotePage(paddingModifier: Modifier, mainViewModel : MainViewModel){
                 TextField(
                     value = title,
                     onValueChange = { title = it },
-                    label = { Text("Title") },
+                    label = { Text("Titre") },
                     modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
                 )
 
@@ -100,7 +100,7 @@ fun CreateNotePage(paddingModifier: Modifier, mainViewModel : MainViewModel){
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Button(onClick = { saveNote() }) {
-                    Text("Save Note")
+                    Text("Enregistrer note")
                 }
             }
         })
