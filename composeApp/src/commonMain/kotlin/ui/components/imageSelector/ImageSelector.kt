@@ -47,6 +47,7 @@ fun ImageSelector(images : List<String>,onImageSelected: (String) -> Unit) {
                     )
             )
         }
+        Text("Lauch")
         Spacer(modifier = Modifier.height(3.dp))
 
         Text("Select an Image:")

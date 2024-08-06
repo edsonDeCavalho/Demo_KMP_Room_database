@@ -31,7 +31,6 @@ fun AppBottomBar(navController: NavHostController) {
         }
     }
 }
-
 /**
  * Cellule de bare de navigation inferieur.
  */

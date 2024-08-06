@@ -18,6 +18,7 @@ import ui.pages.createNote.CreateNotePage
 import ui.pages.home.HomeScreen
 import ui.pages.notedetails.NoteDetails
 import ui.pages.options.Options
+import ui.pages.permissions.PermissionsPage
 
 
 @Composable
@@ -55,7 +56,7 @@ fun BottomNavigationGraph(
         composable(route= BottomBarScreen.CreateNote.route) {
             CreateNotePage(paddingModifier,mainViewModel)
         }
-        //PaGE détails note
+        //Page détails note
         composable(
             route = "${BottomBarScreen.NoteDetails.route}/{noteId}",
             arguments = listOf(
@@ -66,6 +67,10 @@ fun BottomNavigationGraph(
             if (noteId != null) {
                 NoteDetails(noteId,paddingModifier,mainViewModel)
             }
+        }
+        //Page permissions
+        composable(route = BottomBarScreen.Permissions.route) {
+            PermissionsPage()
         }
         //Page demo api
         composable(route= BottomBarScreen.ApiDemo.route) {

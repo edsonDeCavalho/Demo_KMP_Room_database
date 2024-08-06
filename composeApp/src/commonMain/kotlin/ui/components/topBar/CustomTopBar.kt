@@ -40,10 +40,10 @@ fun CustomTopBar(mainViewModel: MainViewModel,navController: NavHostController) 
                     modifier = Modifier.size(34.dp) // Set the icon size
                 )
             }
-            IconButton(onClick = { navController.navigate("info") }) {
+            IconButton(onClick = { navController.navigate("permissions") }) {
                 Icon(
                     imageVector = Icons.Filled.Settings,
-                    contentDescription = "Paramétres",
+                    contentDescription = "Permissions",
                     tint = Color.White, // Set the icon color
                     modifier = Modifier.size(34.dp) // Set the icon size
                 )

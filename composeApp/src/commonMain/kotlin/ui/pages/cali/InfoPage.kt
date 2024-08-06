@@ -21,11 +21,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
+/**
+ * Pgae Iformations : Une liste de toutes les fonctionalitée presentes dans la
+ * application
+ */
 @Composable
 fun InfoPage(paddingModifier: Modifier,mainViewModel : MainViewModel) {
     LaunchedEffect(Unit) {
         mainViewModel.updateTitle("Informations")
     }
+    /**
+     * Your last textes
+     *
+     */
    // mainViewModel.updateTitle("Home")
     Box(
         modifier = paddingModifier.fillMaxSize(),
@@ -38,6 +46,7 @@ fun InfoPage(paddingModifier: Modifier,mainViewModel : MainViewModel) {
                 contentPadding = PaddingValues(16.dp)
             ) {
                 item {
+                    Spacer(modifier = Modifier.height(10.dp))
                     ElevatedCard(
                         elevation = CardDefaults.cardElevation(
                             defaultElevation = 6.dp
@@ -67,7 +76,7 @@ fun InfoPage(paddingModifier: Modifier,mainViewModel : MainViewModel) {
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = "Navigation",
+                            text = "Api",
                             modifier = Modifier
                                 .padding(16.dp),
                             textAlign = TextAlign.Center,
@@ -102,6 +111,25 @@ fun InfoPage(paddingModifier: Modifier,mainViewModel : MainViewModel) {
                     }
                 }
                 item {
+                    ElevatedCard(
+                        elevation = CardDefaults.cardElevation(
+                            defaultElevation = 6.dp
+                        ),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(
+                            text = "Navigation",
+                            modifier = Modifier
+                                .padding(16.dp),
+                            textAlign = TextAlign.Center,
+                        )
+                        Text(
+                            text = "Elevated in a way that it's imcompresible for the human eye giving a force undestructable.",
+                            modifier = Modifier
+                                .padding(10.dp),
+                            textAlign = TextAlign.Center,
+                        )
+                    }
                     ElevatedCard(
                         elevation = CardDefaults.cardElevation(
                             defaultElevation = 6.dp

@@ -6,6 +6,7 @@ import androidx.compose.material.icons.rounded.Api
 import androidx.compose.material.icons.rounded.EditNote
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 
@@ -46,6 +47,11 @@ sealed class BottomBarScreen(
         route="api",
         label="Api Demo",
         icon= Icons.Rounded.Api
+    )
+    object Permissions: BottomBarScreen(
+        route="permissions",
+        label="Permissions",
+        icon= Icons.Rounded.Lock
     )
 }
 

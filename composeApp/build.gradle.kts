@@ -92,6 +92,9 @@ kotlin {
             implementation(libs.ktor.negotiation)
             implementation(libs.kotlinx.serialization.json)
             implementation("media.kamel:kamel-image:0.9.0")
+            //Permissions
+            implementation(libs.moko.permissions)
+            implementation(libs.moko.permissions.compose)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
