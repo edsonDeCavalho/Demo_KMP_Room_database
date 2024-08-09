@@ -92,16 +92,25 @@ kotlin {
             implementation(libs.ktor.negotiation)
             implementation(libs.kotlinx.serialization.json)
             implementation("media.kamel:kamel-image:0.9.0")
-            //Permissions
-            implementation(libs.moko.permissions)
-            implementation(libs.moko.permissions.compose)
+            implementation("io.ktor:ktor-client-core:2.3.4")
+            //implementation("io.ktor:ktor-client-curl:2.3.4")
+           // implementation(libs.okhttp)
+            implementation("io.ktor:ktor-client-cio:2.3.4")
+            implementation("io.ktor:ktor-client-core:2.3.4")
+            implementation("io.ktor:ktor-client-content-negotiation:2.3.4")
+            implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.4")
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
-            implementation(libs.ktor.client.okhttp)
+            implementation("io.ktor:ktor-client-core:2.3.4")
+            implementation("io.ktor:ktor-client-cio:2.3.4")
+            // implementation(libs.ktor.client.okhttp)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            implementation("io.ktor:ktor-client-ios:2.3.4")
+           // implementation("io.ktor:ktor-client-curl:2.3.4")
         }
     }
     task("testClasses")

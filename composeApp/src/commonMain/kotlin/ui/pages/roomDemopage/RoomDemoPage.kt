@@ -19,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,7 +26,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import core.LocalDatabase
-import data.Note
 import data.database.Kmp_database
 import kotlinx.coroutines.launch
 import ui.components.items.NoteItem
@@ -36,7 +34,7 @@ import ui.components.items.NoteItem
  * Page list de notes
  */
 @Composable
-fun NotesListePage(
+fun RoomDemoPage(
     database: Kmp_database,
     paddingModifier: Modifier = Modifier.fillMaxSize(),
     navController: NavController,
@@ -54,10 +52,11 @@ fun NotesListePage(
         ) {
             MaterialTheme {
                 Text(text = "Page room : Database")
-                val database_test = LocalDatabase.current
-                val noteDao = database_test.noteDao()
+                val database_local = LocalDatabase.current
+                val noteDao = database_local.noteDao()
                 val notesList by noteDao.getAllNotes().collectAsState(initial = emptyList())
                 val scope = rememberCoroutineScope()
+
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = PaddingValues(16.dp)

@@ -1,7 +1,7 @@
 package ui.navigation
 
 import MainViewModel
-import NotesListePage
+import RoomDemoPage
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -42,7 +42,7 @@ fun BottomNavigationGraph(
         }
         //Page liste de Notes
         composable(route= BottomBarScreen.Tasks.route) {
-            NotesListePage(
+            RoomDemoPage(
                 database = database,
                 paddingModifier = paddingModifier,
                 navController = navController,

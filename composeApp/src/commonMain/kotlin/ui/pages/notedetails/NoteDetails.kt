@@ -57,7 +57,7 @@ fun NoteDetails(noteId: Long, paddingModifier: Modifier, mainViewModel: MainView
             mainViewModel.updateTitle(it.title)
         }
     }
-    fun saveChanges() {
+    fun enregistremmentDeMidifications() {
         note?.let {
             val updatedNote = it.copy(title = title, text = text, image = image)
             scope.launch {
@@ -145,7 +145,7 @@ fun NoteDetails(noteId: Long, paddingModifier: Modifier, mainViewModel: MainView
 
                 item{
                      Spacer(modifier = Modifier.height(16.dp))
-                     Button(onClick = { saveChanges() },) {
+                     Button(onClick = { enregistremmentDeMidifications() },) {
                         Text("Enregistrer modifications")
                     }
                 }
